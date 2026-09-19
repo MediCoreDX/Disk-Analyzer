@@ -8,18 +8,18 @@ The application uses a background thread for disk scanning, so the graphical use
 
 ## Features
 
-* 🔍 Analyze disk usage
-* 📁 Browse directories
-* 📄 Display files and folders
-* 📊 Display file and folder sizes
-* 📈 Sort results by size
-* 🔄 Refresh the current directory
-* ⬅️ Navigate back to parent directories
-* 📂 Open folders with Dolphin
-* 🗑️ Delete files and directories
-* ⚡ Background scanning using `QThread`
-* 🛡️ Restricts navigation and deletion to the user's home directory
-* 🚫 Symbolic links are ignored during scanning
+*  Analyze disk usage
+*  Browse directories
+*  Display files and folders
+*  Display file and folder sizes
+*  Sort results by size
+*  Refresh the current directory
+*  Navigate back to parent directories
+*  Open folders with Dolphin
+*  Delete files and directories
+*  Background scanning using `QThread`
+*  Restricts navigation and deletion to the user's home directory
+*  Symbolic links are ignored during scanning
 
 ## Screenshots
 
