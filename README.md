@@ -166,20 +166,20 @@ DiskAnalyzer/
 
 Possible future features include:
 
-* 🗑️ Move deleted files to the Trash instead of permanently deleting them
-* 📊 Graphical disk usage charts
-* 🍩 Pie chart / donut chart
-* 📈 Storage usage visualization
-* 🔎 Search for files
-* 📏 Minimum/maximum size filters
-* 🧹 Duplicate file detection
-* 💾 Drive selection
-* 📂 Better directory tree navigation
-* ⏹️ Cancel scan button
-* 🌍 Multi-language support
-* 🎨 Light and dark themes
-* ⚙️ Application settings
-* 📦 Linux package
+*  Move deleted files to the Trash instead of permanently deleting them
+*  Graphical disk usage charts
+*  Pie chart / donut chart
+*  Storage usage visualization
+*  Search for files
+*  Minimum/maximum size filters
+*  Duplicate file detection
+*  Drive selection
+*  Better directory tree navigation
+*  Cancel scan button
+*  Multi-language support
+*  Light and dark themes
+*  Application settings
+*  Linux package
 
 ## Contributing
 
