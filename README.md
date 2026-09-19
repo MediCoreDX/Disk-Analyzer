@@ -21,10 +21,6 @@ The application uses a background thread for disk scanning, so the graphical use
 *  Restricts navigation and deletion to the user's home directory
 *  Symbolic links are ignored during scanning
 
-## Screenshots
-
-Add screenshots of the application here.
-
 Example:
 
 ```text
@@ -32,7 +28,6 @@ screenshots/
 └── disk-analyzer.png
 ```
 
-Then add an image to this section:
 
 ```markdown
 ![Disk Analyzer](screenshots/disk-analyzer.png)
