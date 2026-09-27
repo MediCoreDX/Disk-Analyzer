@@ -151,10 +151,8 @@ DiskAnalyzer/
 ├── requirements.txt
 ├── README.md
 ├── LICENSE
-├── .gitignore
-│
-└── screenshots/
-    └── disk-analyzer.png
+├── .gitignore 
+└── disk-analyzer.png
 ```
 
 ## Future improvements
@@ -184,12 +182,6 @@ If you find a bug or have an idea for a new feature, feel free to open an issue.
 
 Pull requests are also welcome.
 
-## License
-
-This project is licensed under the MIT License.
-
-See the `LICENSE` file for more information.
-
 ## Author
 
 Created as a Python and Linux learning project.
@@ -202,5 +194,6 @@ Built with:
 * Linux
 
 ---
+Medic0re.DX@proton.me
 
 ⭐ If you find this project useful, consider giving the repository a star.
