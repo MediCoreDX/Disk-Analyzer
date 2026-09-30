@@ -99,7 +99,7 @@ class ScanWorker(QObject):
 
     progress = Signal(int)
     status = Signal(str)
-    finished = Signal(list, int)
+    finished = Signal(list, int, str)
     cancelled = Signal()
 
     def __init__(self, path):
@@ -140,6 +140,7 @@ class ScanWorker(QObject):
                 self.finished.emit(
                     [],
                     0,
+                    f"Fehler beim Lesen: {error}",
                 )
 
                 return
@@ -186,6 +187,7 @@ class ScanWorker(QObject):
                 self.finished.emit(
                     [],
                     0,
+                    "Verzeichnis ist leer.",
                 )
 
                 return
@@ -279,17 +281,14 @@ class ScanWorker(QObject):
             self.finished.emit(
                 items,
                 total_size,
+                "Scan abgeschlossen.",
             )
 
         except Exception as error:
-
-            self.status.emit(
-                f"Scan-Fehler: {error}"
-            )
-
             self.finished.emit(
                 [],
                 0,
+                f"Scan-Fehler: {error}",
             )
 
 
@@ -304,6 +303,7 @@ class DiskAnalyzer(QMainWindow):
 
         self.worker = None
         self.thread = None
+        self.close_requested = False
 
         self.scan_items = []
         self.total_size = 0
@@ -709,6 +709,7 @@ class DiskAnalyzer(QMainWindow):
         self,
         items,
         total_size,
+        status_text,
     ):
 
         self.scan_items = items
@@ -720,13 +721,13 @@ class DiskAnalyzer(QMainWindow):
             f"Gesamt: {format_size(total_size)}"
         )
 
-        self.status_label.setText(
-            f"Scan abgeschlossen – "
-            f"{len(items)} Einträge."
-        )
+        if status_text == "Scan abgeschlossen.":
+            status_text = f"{status_text} {len(items)} Einträge."
+
+        self.status_label.setText(status_text)
 
         self.progress_bar.setValue(
-            100
+            0 if status_text.startswith(("Fehler", "Scan-Fehler")) else 100
         )
 
         self.scan_button.setEnabled(
@@ -775,6 +776,9 @@ class DiskAnalyzer(QMainWindow):
         self.thread = None
 
         self.update_navigation_buttons()
+
+        if self.close_requested:
+            self.close()
 
     def cancel_scan(self):
 
@@ -1072,10 +1076,13 @@ class DiskAnalyzer(QMainWindow):
             self.worker.stop()
 
         if self.thread is not None:
-
-            self.thread.quit()
-
-            self.thread.wait(3000)
+            self.close_requested = True
+            self.setEnabled(False)
+            self.status_label.setText(
+                "Scan wird abgebrochen; das Fenster schließt danach."
+            )
+            event.ignore()
+            return
 
         event.accept()
 
